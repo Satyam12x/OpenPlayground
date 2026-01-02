@@ -23,7 +23,7 @@ Before you begin, ensure you have:
 
 ### Setting Up Your Development Environment
 
-1. **Fork the repository**
+1. **Fork the repository (don’t forget to star it if you like the project)**
    - Click the "Fork" button at the top right of the repository page
    - This creates a copy of the repository in your GitHub account
 

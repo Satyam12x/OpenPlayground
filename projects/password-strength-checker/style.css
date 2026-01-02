@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Background */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Glass Card */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* Noise */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.15'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Title */
+h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Password input */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+#toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Strength bar */
+.strength-bar {
+  height: 8px;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#strength-indicator {
+  height: 100%;
+  width: 0%;
+  transition: 0.3s;
+}
+
+/* Strength text */
+#strength-text {
+  text-align: center;
+  color: #fff;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Rules */
+.rules {
+  list-style: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.rules li {
+  color: #ffb4b4;
+}
+
+.valid {
+  color: #7CFFB2;
+}
+
+/* Suggestions */
+.suggestion-box {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+}

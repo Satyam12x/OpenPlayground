@@ -1,10 +1,12 @@
 // Theme Toggle Functionality
 const toggleBtn = document.getElementById('toggle-mode-btn');
+const themeIcon = document.getElementById('theme-icon');
 const html = document.documentElement;
 
 // Check for saved theme preference or default to 'light'
 const currentTheme = localStorage.getItem('theme') || 'light';
 html.setAttribute('data-theme', currentTheme);
+updateThemeIcon(currentTheme);
 
 toggleBtn.addEventListener('click', () => {
     const theme = html.getAttribute('data-theme');
@@ -12,7 +14,24 @@ toggleBtn.addEventListener('click', () => {
 
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+    
+    // Add shake animation
+    toggleBtn.classList.add('shake');
+    setTimeout(() => {
+        toggleBtn.classList.remove('shake');
+    }, 500);
 });
+
+function updateThemeIcon(theme) {
+    if (theme === 'dark') {
+        themeIcon.classList.remove('ri-lightbulb-line');
+        themeIcon.classList.add('ri-lightbulb-fill');
+    } else {
+        themeIcon.classList.remove('ri-lightbulb-fill');
+        themeIcon.classList.add('ri-lightbulb-line');
+    }
+}
 
 // Scroll to Top Button
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');
@@ -69,6 +88,34 @@ document.querySelectorAll('.card').forEach(card => {
     observer.observe(card);
 });
 
-// Console message
-console.log('%c👋 Welcome to OpenPlayground!', 'font-size: 20px; font-weight: bold; color: #f43f5e;');
 console.log('%cWant to contribute? Check out: https://github.com/YadavAkhileshh/OpenPlayground', 'font-size: 14px; color: #8b5cf6;');
+
+// Category Filtering
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                card.style.display = '';
+                // Add fade in animation
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});

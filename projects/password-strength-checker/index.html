@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Clock</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="bg-gradient"></div>
 
-  <div class="container glass">
-    <h2>Password Strength Checker</h2>
+  <div class="card glass">
+    <h2>🔐 Password Strength Checker</h2>
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Enter your password"
-    />
+    <div class="password-field">
+      <input type="password" id="password" placeholder="Enter your password" />
+      <span id="toggle">👁️</span>
+    </div>
 
     <div class="strength-bar">
       <div id="strength-indicator"></div>
@@ -33,10 +29,10 @@
       <li id="number">✔ At least one number</li>
       <li id="special">✔ At least one special character</li>
     </ul>
+
+    <div class="suggestion-box" id="suggestions"></div>
   </div>
 
   <script src="script.js"></script>
 </body>
-
-
 </html>
